@@ -1,5 +1,5 @@
 <template>
-  <v-container fill-height style="padding: 0">
+  <v-container fill-height fluid>
     <v-navigation-drawer
       width="200"
       permanent
@@ -23,7 +23,7 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-container fill-height style="padding: 0; background-color: white"></v-container>
+    <v-container fill-height style="padding: 0;" fluid></v-container>
   </v-container>
 </template>
 
