@@ -1,5 +1,5 @@
 /* eslint-disable */
-import api from '../../../fake/user/storage/dataset';
+import api from '../../../api/user/storage/dataset';
 import utils from '../../../utils';
 import types from '../../../mutation-types';
 
@@ -9,8 +9,8 @@ const state = {
 };
 
 const actions = {
-  getDatasetCollection({ commit }) {
-    return utils.wrapLoading(commit, api.getDatasetCollection())
+  get_dataset_collection({ commit }) {
+    return utils.wrapLoading(commit, api.get_dataset_collection())
     .then((res) => {
       res.data.data.sort(function (a, b) {
         if (a.name < b.name) return -1;

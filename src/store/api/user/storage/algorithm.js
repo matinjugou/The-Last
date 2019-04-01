@@ -17,7 +17,7 @@ export default {
     data.append('visibility', configs.visibility);
     data.append('filename', configs.file.name);
     data.append('owner', 'USER44ccl2f08711e88d4934e12dd07c07');
-    api.post('/algorithm/upload',
+    return api.post('/algorithm/upload',
     data,
     {
       headers: {

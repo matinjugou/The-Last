@@ -127,7 +127,7 @@ export default {
   },
   methods: {
     ...mapActions('user_storage_dataset', [
-      'getDatasetCollection'
+      'get_dataset_collection'
     ]),
   },
   computed: {
@@ -136,7 +136,7 @@ export default {
     ])
   },
   mounted() {
-    this.getDatasetCollection();
+    this.get_dataset_collection();
   }
 }
 </script>

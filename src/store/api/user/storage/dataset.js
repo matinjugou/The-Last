@@ -1,14 +1,11 @@
 import api from './index';
 
 export default {
-  getDatasetCollection() {
-    return api.get('/dataset/list');
-  },
-  getDatasetDetail(id) {
-    return api.get(`/dataset/${id}`);
-  },
-  getDatasetTreeNode(id) {
-    if (id === null) return api.get('/dataset/tree/root');
-    return api.get(`/dataset/tree/${id}/child`);
+  get_dataset_collection() {
+    return api.get('/dataset/list', {
+      headers: {
+        'token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiVVNFUjQ0YzJmMDg3MTFlODhkNDkzNGUxMmRkMDdjMDcifQ.tTreGqT37IMNgOGqnLLa3ylFjRN-7K-pfmnzgvReNdY',
+      },
+    });
   },
 };
