@@ -12,11 +12,15 @@ const actions = {
   get_dataset_collection({ commit }) {
     return utils.wrapLoading(commit, api.get_dataset_collection())
     .then((res) => {
-      res.data.data.sort(function (a, b) {
-        if (a.name < b.name) return -1;
-        return 1;
-      });
-      commit(types.SET_DATA, { dataset_collection: res.data.data });
+      commit(types.SET_DATA, { dataset_collection: res.data });
+      return res;
+    }).catch((err) => {
+      console.error(err);
+    });
+  },
+  create_dataset({ commit }, configs) {
+    return utils.wrapLoading(commit, api.create_dataset(configs))
+    .then((res) => {
       return res;
     }).catch((err) => {
       console.error(err);

@@ -3,6 +3,7 @@
     <v-navigation-drawer
       width="200"
       permanent
+      style="z-index: 0"
     >
       <v-list>
         <v-list-tile @click="">

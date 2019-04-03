@@ -10,7 +10,6 @@ export default {
   },
   create_algorithm(configs) {
     const data = new FormData();
-    console.log(configs);
     data.append('name', configs.name);
     data.append('description', configs.description);
     data.append('entrance', configs.entrance);
@@ -38,7 +37,6 @@ export default {
       const file_id = res.data.file_id;
       let chunk_file = null;
       const upload_chunk_file = (chunk_start, chunk_end) => {
-        console.log("start", chunk_start, "end", chunk_end);
         chunk_file = configs.file.slice(chunk_start, chunk_end);
         const chunk_data = new FormData();
         chunk_data.append('file', chunk_file);
@@ -79,7 +77,6 @@ export default {
             'token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoiVVNFUjQ0YzJmMDg3MTFlODhkNDkzNGUxMmRkMDdjMDcifQ.tTreGqT37IMNgOGqnLLa3ylFjRN-7K-pfmnzgvReNdY',
           },
         }).then((res)=>{
-          console.log(res);
           return res;
         })
       });

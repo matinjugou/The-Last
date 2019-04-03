@@ -75,6 +75,8 @@
             <v-flex xs12>
               <v-data-table class="elevation-1"
                             :headers="headers"
+                            :rows-per-page-items="[10, 20]"
+                            rows-per-page-text="每页记录数"
                             :items="algorithm_collection">
                   <template v-slot:items="props">
                       <td>

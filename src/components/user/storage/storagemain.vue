@@ -1,7 +1,7 @@
 <template>
     <v-container fill-height style="padding: 0;" fluid>
-       <v-layout align-start>
-           <v-navigation-drawer permanent width="200">
+       <v-layout>
+           <v-navigation-drawer permanent width="200" clipped style="z-index: 0">
                <v-list>
                    <v-list-tile @click="chosen_tab=0">
                        <v-list-tile-action>
