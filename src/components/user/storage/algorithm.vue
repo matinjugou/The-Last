@@ -3,7 +3,7 @@
         <v-layout align-center style="margin-bottom: 7px">
           <h1>算法列表</h1>
           <v-spacer></v-spacer>
-            <v-dialog v-model="new_algorithm_dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
+          <v-dialog v-model="new_algorithm_dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
                 <template v-slot:activator="{ on }">
                     <v-btn color="info" style="margin: 0" v-on="on">新建算法</v-btn>
                 </template>
@@ -19,7 +19,7 @@
                         </v-toolbar-items>
                     </v-toolbar>
                     <v-list three-line subheader>
-                        <v-form>
+                        <v-form dense>
                             <v-container fluid>
                                 <h3>算法元信息</h3>
                                 <v-layout wrap>

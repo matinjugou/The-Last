@@ -19,7 +19,7 @@
                         </v-toolbar-items>
                     </v-toolbar>
                     <v-list three-line subheader>
-                        <v-form>
+                        <v-form dense>
                             <v-container fluid>
                                 <h3>数据元信息</h3>
                                 <v-layout wrap>

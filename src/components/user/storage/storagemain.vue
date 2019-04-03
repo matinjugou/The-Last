@@ -1,8 +1,10 @@
 <template>
     <v-container fill-height style="padding: 0;" fluid>
        <v-layout>
-           <v-navigation-drawer permanent width="200" clipped style="z-index: 0">
-               <v-list>
+           <v-navigation-drawer permanent
+                                width="160px"
+                                style="z-index: 0">
+               <v-list dense>
                    <v-list-tile @click="chosen_tab=0">
                        <v-list-tile-action>
                            <v-icon>code</v-icon>
@@ -60,6 +62,8 @@ export default {
   data() {
     return {
       chosen_tab: 0,
+      mini: false,
+      storage_drawer: true,
     }
   },
 }
