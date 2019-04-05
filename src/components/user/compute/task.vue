@@ -1,6 +1,9 @@
 <template>
   <v-container fluid grid-list-xs style="margin: 0">
     <v-layout align-center style="margin-bottom: 7px">
+      <v-btn flat style="margin: 0" icon @click.stop="$emit('update:left_draw', true)">
+        <v-icon>menu</v-icon>
+      </v-btn>
       <h1>任务列表</h1>
       <v-spacer></v-spacer>
       <v-dialog v-model="new_task_dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
@@ -23,35 +26,28 @@
               <v-container fluid>
                 <h3>任务元信息</h3>
                 <v-layout wrap>
-                  <v-flex xs6>
+                  <v-flex xs12 md4 lg3>
                     <v-text-field v-model="new_task_form.name"
                                   dense
                                   :counter="false"
                                   label="任务名称"
                                   required></v-text-field>
                   </v-flex>
-                  <v-flex xs6>
+                  <v-flex xs12 md4 lg3>
                     <v-text-field v-model="new_task_form.image"
                                   dense
                                   :counter="false"
                                   label="任务镜像"
                                   required></v-text-field>
                   </v-flex>
-                  <v-flex xs6>
-                    <v-text-field v-model="new_task_form.gpu"
-                                  dense
-                                  :counter="false"
-                                  label="GPU资源数"
-                                  required></v-text-field>
-                  </v-flex>
-                  <v-flex xs6>
+                  <v-flex xs12 md4 lg3>
                     <v-text-field v-model="new_task_form.entrance"
                                   dense
                                   :counter="false"
                                   label="执行入口"
                                   required></v-text-field>
                   </v-flex>
-                  <v-flex xs6>
+                  <v-flex xs12 md4 lg3>
                     <v-select dense
                         v-model="new_task_form.main_algorithm"
                         :items="algorithm_collection.map(
@@ -61,7 +57,7 @@
                         label="主函数"
                     ></v-select>
                   </v-flex>
-                  <v-flex xs6>
+                  <v-flex xs12>
                     <v-radio-group label="可见性"
                                    dense
                                    :column="false"
@@ -84,9 +80,35 @@
                 </v-layout>
               </v-container>
               <v-container fluid>
+                <h3>资源配置</h3>
+                <v-layout wrap>
+                  <v-flex xs12 md4 lg3>
+                    <v-text-field v-model="new_task_form.gpu"
+                                  dense
+                                  :counter="false"
+                                  label="GPU资源数"
+                                  required></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 md4 lg3>
+                    <v-text-field v-model="new_task_form.memory"
+                                  dense
+                                  :counter="false"
+                                  label="内存大小"
+                                  required></v-text-field>
+                  </v-flex>
+                  <v-flex xs12 md4 lg3>
+                    <v-text-field v-model="new_task_form.cpu"
+                                  dense
+                                  :counter="false"
+                                  label="CPU资源"
+                                  required></v-text-field>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+              <v-container fluid>
                 <h3>所需文件</h3>
                 <v-layout wrap>
-                  <v-flex xs6>
+                  <v-flex xs12 md4 lg3>
                     <v-select
                         dense
                         small-chips
@@ -100,7 +122,7 @@
                         multiple
                     ></v-select>
                   </v-flex>
-                  <v-flex xs6>
+                  <v-flex xs12 md4 lg3>
                     <v-select
                         dense
                         small-chips
@@ -165,11 +187,23 @@
     name: "task",
     data() {
       return {
+        headers: [
+          { text: 'ID', value: 'id', width: 200 },
+          { text: '名称', value: 'name', width: 200 },
+          { text: '入口函数', value: 'entrance', width: 200 },
+          { text: '创建日期', value: 'upload_time', with: 200 },
+          { text: '状态', value: 'status', with: 200 },
+          { text: '操作', value: 'actions', width:200 },
+        ],
         new_task_form: {},
-        
+        task_collection: [],
+
         new_task_dialog: false,
       }
     },
+    props: [
+    'left_draw',
+    ],
     computed: {
       ...mapState('user_storage_algorithm', [
         'algorithm_collection',

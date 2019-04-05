@@ -1,6 +1,9 @@
 <template>
     <v-container fluid grid-list-xs style="margin: 0">
         <v-layout align-center style="margin-bottom: 7px">
+          <v-btn flat style="margin: 0" icon @click.stop="$emit('update:left_draw', true)">
+            <v-icon>menu</v-icon>
+          </v-btn>
           <h1>数据列表</h1>
           <v-spacer></v-spacer>
             <v-dialog v-model="new_dataset_dialog" fullscreen hide-overlay transition="dialog-bottom-transition">
@@ -23,7 +26,7 @@
                             <v-container fluid>
                                 <h3>数据元信息</h3>
                                 <v-layout wrap>
-                                    <v-flex xs12>
+                                    <v-flex xs12 md4 lg3>
                                         <v-text-field v-model="new_dataset_form.name"
                                                       :counter="false"
                                                       label="数据名称"
@@ -37,6 +40,8 @@
                                     </v-flex>
                                     <v-flex xs12>
                                         <v-radio-group label="可见性"
+                                                       dense
+                                                       :column="false"
                                                        v-model="new_dataset_form.visibility">
                                             <v-radio label="仅自己可见"
                                                      :value="1"></v-radio>
@@ -127,6 +132,9 @@ export default {
       }
     }
   },
+  props: [
+    'left_draw',
+  ],
   methods: {
     ...mapActions('user_storage_dataset', [
       'get_dataset_collection',
